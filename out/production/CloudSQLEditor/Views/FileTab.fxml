@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.fxmisc.richtext.CodeArea?>
+
+<?import org.fxmisc.flowless.VirtualizedScrollPane?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<Tab fx:id="tab" text="Untitled Tab" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1"
+     fx:controller="Controllers.FileTabController" >
+
+    <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="1850.0" >
+        <children>
+            <SplitPane orientation="VERTICAL" dividerPositions="0.62"
+                       style="-fx-background-color: linear-gradient(lightgray, gray);;" AnchorPane.bottomAnchor="0.0"
+                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <items>
+
+
+                    <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                        <children>
+                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" >
+                                <children>
+                                    <ToolBar orientation="HORIZONTAL" maxHeight="1.7976931348623157E308"
+                                             maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                                        <items>
+                                            <Button text="Run" fx:id="run" onAction="#executeQuery" >
+                                            </Button>
+                                            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"/>
+                                            <Label text="Rows:"></Label>
+                                            <Spinner fx:id="rows">
+                                                <valueFactory>
+                                                    <SpinnerValueFactory.IntegerSpinnerValueFactory min="50" max="1000000"
+                                                                                                    initialValue="50"
+                                                                                                    amountToStepBy="50"/>
+                                                </valueFactory>
+                                            </Spinner>
+                                            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"/>
+                                            <Label text="Select Connection:"></Label>
+                                            <ChoiceBox fx:id="connlist" onAction="#validateConnection" >
+                                                <items></items>
+                                            </ChoiceBox>
+                                            <Button text="Connect/Reconnect" fx:id="connect" onAction="#setConnection" ></Button>
+                                            <Button text="Disconnect" fx:id="disconnect" onAction="#resetConnection"></Button>
+                                        </items>
+                                    </ToolBar>
+                                </children>
+                            </HBox>
+                            <VirtualizedScrollPane VBox.vgrow="ALWAYS">
+                            <content>
+                            <CodeArea fx:id="textArea" showCaret="ON" wrapText="true"
+                                      stylesheets="@../Styling/SQLKeywords.css" VBox.vgrow="ALWAYS" focusTraversable="true" onKeyPressed="#executeQueryKey" HBox.hgrow="ALWAYS" style="-fx-border-color:#03c2fc; -fx-border-width: 1; -fx-border-style: solid;">
+                            </CodeArea>
+                            </content>
+                            </VirtualizedScrollPane>
+                        </children>
+                    </VBox>
+
+                    <VBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+                        <children>
+                            <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+                                <tabs>
+                                    <Tab text="Results">
+                                        <content>
+                                            <VBox VBox.vgrow="ALWAYS">
+                                            <HBox prefWidth="5.0">
+                                                <ToolBar HBox.hgrow="ALWAYS">
+                                                    <items>
+                                                        <Button fx:id="dataexport" text="Export" onAction="#exportData"></Button>
+                                                        <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"></Separator>
+                                                        <Label text="Row Count:"></Label>
+                                                        <TextField fx:id="rowcount" editable="false"></TextField>
+                                                        <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"></Separator>
+                                                        <Label text="Elapsed Time:"></Label>
+                                                        <TextField fx:id="elapsedtime" editable="false" ></TextField>
+                                                    </items>
+                                                </ToolBar>
+                                            </HBox>
+                                            <TableView fx:id="result" VBox.vgrow="ALWAYS" tableMenuButtonVisible="true"
+                                                       HBox.hgrow="ALWAYS"></TableView>
+                                            </VBox>
+                                        </content>
+                                    </Tab>
+                                    <Tab text="Log">
+                                        <content>
+
+                                            <TextArea fx:id="log" editable="false" HBox.hgrow="ALWAYS"
+                                                      VBox.vgrow="ALWAYS"></TextArea>
+
+                                        </content>
+                                    </Tab>
+                                </tabs>
+                            </TabPane>
+                        </children>
+                    </VBox>
+                </items>
+            </SplitPane>
+        </children>
+    </AnchorPane>
+
+</Tab>

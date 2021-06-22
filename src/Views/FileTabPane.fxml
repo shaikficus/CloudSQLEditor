@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FileTabPaneController">
+   <children>
+      <TabPane fx:id="tabPane" focusTraversable="false" stylesheets="@../Styling/FileTabPane.css" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <Button   mnemonicParsing="false" focusTraversable="false"  onAction="#newFile" text="+"  AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font size="12.0" />
+         </font>
+
+         <padding>
+            <Insets bottom="1.5" left="6.5" right="6.5" top="1.5" />
+         </padding>
+      </Button>
+   </children>
+</AnchorPane>
