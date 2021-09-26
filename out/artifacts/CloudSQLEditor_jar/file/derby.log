@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Jul 08 13:43:37 IST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017a-852d-ecdb-000007ca90a8 
+on database directory C:\Users\musthafa.shaik\IdeaProjects\CloudSQLEditor\out\artifacts\CloudSQLEditor_jar\file\cloudsqldb with class loader sun.misc.Launcher$AppClassLoader@c387f44 
+Loaded from file:/C:/Users/musthafa.shaik/AppData/Local/Temp/e4j34E0.tmp_dir1625732007/CloudSQLEditor.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_251-b08
+user.dir=C:\Users\musthafa.shaik\IdeaProjects\CloudSQLEditor\out\artifacts\CloudSQLEditor_jar\file
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

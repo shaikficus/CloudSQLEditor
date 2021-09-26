@@ -2,15 +2,17 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<?import org.fxmisc.richtext.CodeArea?>
-
 <?import org.fxmisc.flowless.VirtualizedScrollPane?>
-<?import javafx.scene.input.KeyCodeCombination?>
+<?import org.fxmisc.richtext.CodeArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
+<?import javafx.scene.text.Text?>
 <Tab fx:id="tab" text="Untitled Tab" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1"
-     fx:controller="Controllers.FileTabController" >
+     fx:controller="Controllers.FileTabController">
 
-    <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="1850.0" >
+    <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="1850.0">
         <children>
             <SplitPane orientation="VERTICAL" dividerPositions="0.62"
                        style="-fx-background-color: linear-gradient(lightgray, gray);;" AnchorPane.bottomAnchor="0.0"
@@ -20,39 +22,86 @@
 
                     <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                         <children>
-                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" >
+                            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                                 <children>
                                     <ToolBar orientation="HORIZONTAL" maxHeight="1.7976931348623157E308"
                                              maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                                         <items>
-                                            <Button text="Run" fx:id="run" onAction="#executeQuery" >
-                                            </Button>
-                                            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"/>
-                                            <Label text="Rows:"></Label>
+
+
+                                            <Label text="Rows:">
+                                                <graphic>
+                                                    <FontAwesomeIconView glyphName="ALIGN_JUSTIFY" glyphSize="18" />
+                                                </graphic>
+                                            </Label>
                                             <Spinner fx:id="rows">
                                                 <valueFactory>
-                                                    <SpinnerValueFactory.IntegerSpinnerValueFactory min="50" max="1000000"
-                                                                                                    initialValue="50"
+                                                    <SpinnerValueFactory.IntegerSpinnerValueFactory min="50"
+                                                                                                    max="1000000"
+                                                                                                    initialValue="200"
                                                                                                     amountToStepBy="50"/>
                                                 </valueFactory>
                                             </Spinner>
                                             <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"/>
-                                            <Label text="Select Connection:"></Label>
-                                            <ChoiceBox fx:id="connlist" onAction="#validateConnection" >
+                                            <Button text="Run" fx:id="run" onAction="#executeQuery">
+                                                <tooltip><Tooltip text="Execute Query"></Tooltip></tooltip>
+                                                <graphic>
+                                                    <FontAwesomeIconView glyphName="PLAY_CIRCLE" glyphSize="18"/>
+                                                </graphic>
+                                            </Button>
+                                            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"/>
+                                            <Label text="Select Connection:">
+                                                <graphic>
+                                                    <FontAwesomeIconView glyphName="CLOUD" glyphSize="18"/>
+                                                </graphic>
+                                            </Label>
+                                            <ChoiceBox fx:id="connlist" onAction="#validateConnection">
                                                 <items></items>
                                             </ChoiceBox>
-                                            <Button text="Connect/Reconnect" fx:id="connect" onAction="#setConnection" ></Button>
-                                            <Button text="Disconnect" fx:id="disconnect" onAction="#resetConnection"></Button>
+                                            <Button text="Connect/Reconnect" fx:id="connect"
+                                                    onAction="#setConnection">
+                                                <tooltip><Tooltip text="Connect to cloud"></Tooltip></tooltip>
+                                                <graphic>
+                                                    <FontAwesomeIconView glyphName="CHECK_CIRCLE" glyphSize="18" />
+                                                </graphic>
+                                            </Button>
+                                            <Button text="Disconnect" fx:id="disconnect"
+                                                    onAction="#resetConnection">
+                                                <tooltip><Tooltip text="Disconnect from cloud"></Tooltip></tooltip>
+                                                <graphic>
+                                                    <FontAwesomeIconView glyphName="MINUS_CIRCLE" glyphSize="18" />
+                                                </graphic>
+                                            </Button>
+                                            <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"/>
+
+                                            <Pane HBox.hgrow="ALWAYS" />
+                                            <Label text="Font Size:">
+                                                <graphic>
+                                                    <FontAwesomeIconView glyphName="TEXT_HEIGHT" glyphSize="18" />
+                                                </graphic>
+                                            </Label>
+                                            <Spinner fx:id="fsize" prefWidth="70.0">
+                                                <valueFactory>
+                                                    <SpinnerValueFactory.IntegerSpinnerValueFactory min="12" max="26"
+                                                                                                    initialValue="12"
+                                                                                                    amountToStepBy="2"/>
+                                                </valueFactory>
+                                            </Spinner>
+
+
                                         </items>
                                     </ToolBar>
                                 </children>
                             </HBox>
                             <VirtualizedScrollPane VBox.vgrow="ALWAYS">
-                            <content>
-                            <CodeArea fx:id="textArea" showCaret="ON" wrapText="true"
-                                      stylesheets="@../Styling/SQLKeywords.css" VBox.vgrow="ALWAYS" focusTraversable="true" onKeyPressed="#executeQueryKey" HBox.hgrow="ALWAYS" style="-fx-border-color:#03c2fc; -fx-border-width: 1; -fx-border-style: solid;">
-                            </CodeArea>
-                            </content>
+                                <content>
+                                    <CodeArea fx:id="textArea" showCaret="ON" wrapText="true"
+                                              stylesheets="@../Styling/SQLKeywords.css" VBox.vgrow="ALWAYS"
+                                              focusTraversable="true" onKeyPressed="#executeQueryKey"
+                                              HBox.hgrow="ALWAYS"
+                                              style="-fx-border-color:#03c2fc; -fx-border-width: 1; -fx-border-style: solid;">
+                                    </CodeArea>
+                                </content>
                             </VirtualizedScrollPane>
                         </children>
                     </VBox>
@@ -62,27 +111,53 @@
                             <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
                                 <tabs>
                                     <Tab text="Results">
+                                        <graphic>
+                                            <FontAwesomeIconView glyphName="TABLE" glyphSize="18" />
+                                        </graphic>
                                         <content>
                                             <VBox VBox.vgrow="ALWAYS">
-                                            <HBox prefWidth="5.0">
-                                                <ToolBar HBox.hgrow="ALWAYS">
-                                                    <items>
-                                                        <Button fx:id="dataexport" text="Export" onAction="#exportData"></Button>
-                                                        <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"></Separator>
-                                                        <Label text="Row Count:"></Label>
-                                                        <TextField fx:id="rowcount" editable="false"></TextField>
-                                                        <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="4.0"></Separator>
-                                                        <Label text="Elapsed Time:"></Label>
-                                                        <TextField fx:id="elapsedtime" editable="false" ></TextField>
-                                                    </items>
-                                                </ToolBar>
-                                            </HBox>
-                                            <TableView fx:id="result" VBox.vgrow="ALWAYS" tableMenuButtonVisible="true"
-                                                       HBox.hgrow="ALWAYS"></TableView>
+                                                <HBox prefWidth="5.0">
+                                                    <ToolBar HBox.hgrow="ALWAYS">
+                                                        <items>
+                                                            <Button fx:id="dataexport" text="Export"
+                                                                    onAction="#exportData">
+                                                                <tooltip><Tooltip text="Export Data"></Tooltip></tooltip>
+                                                                <graphic>
+                                                                    <MaterialDesignIconView glyphName="EXPORT" glyphSize="18" />
+                                                                </graphic>
+                                                            </Button>
+                                                            <Separator orientation="VERTICAL" prefHeight="0.0"
+                                                                       prefWidth="4.0"></Separator>
+                                                            <Label text="Row Count:">
+                                                                <graphic>
+                                                                    <MaterialDesignIconView glyphName="COUNTER" glyphSize="18" />
+                                                                </graphic>
+                                                            </Label>
+                                                            <Label fx:id="countofrows" text="0"></Label>
+
+
+                                                            <Separator orientation="VERTICAL" prefHeight="0.0"
+                                                                       prefWidth="4.0"></Separator>
+                                                            <Label text="Elapsed Time:">
+                                                                <graphic>
+                                                                    <MaterialDesignIconView glyphName="TIMER" glyphSize="18" />
+                                                                </graphic>
+                                                            </Label>
+                                                            <Label fx:id="elapsedtime" text="00:00:00"></Label>
+
+                                                        </items>
+                                                    </ToolBar>
+                                                </HBox>
+                                                <TableView fx:id="result" VBox.vgrow="ALWAYS"
+                                                           tableMenuButtonVisible="true"
+                                                           HBox.hgrow="ALWAYS"></TableView>
                                             </VBox>
                                         </content>
                                     </Tab>
                                     <Tab text="Log">
+                                        <graphic>
+                                            <FontAwesomeIconView glyphName="FILE_TEXT_ALT" glyphSize="18" />
+                                        </graphic>
                                         <content>
 
                                             <TextArea fx:id="log" editable="false" HBox.hgrow="ALWAYS"

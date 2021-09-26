@@ -12,6 +12,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<?import javafx.scene.control.PasswordField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Tooltip?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <AnchorPane id="AnchorPane" prefHeight="290.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ConnectionsController">
     <children>
         <SplitPane dividerPositions="0.2411" prefHeight="350.0" prefWidth="881.0" style="-fx-background-color: linear-gradient(lightgray, gray);;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -44,7 +48,7 @@
                                 <Label text="User Name" GridPane.rowIndex="1" />
                                 <TextField fx:id="UserName" onKeyReleased="#handleKeyAction" prefHeight="25.0" prefWidth="412.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
                                 <Label text="Password" GridPane.rowIndex="2" />
-                                <TextField fx:id="Password" onKeyReleased="#handleKeyAction" prefWidth="300.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                                <PasswordField fx:id="Password" onKeyReleased="#handleKeyAction" prefWidth="300.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
                                 <Label text="Report Absolute Path" GridPane.rowIndex="3" />
                                 <TextField fx:id="ReportPath" onKeyReleased="#handleKeyAction" prefHeight="25.0" prefWidth="314.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
                                 <Label text="BI Connection URL" GridPane.rowIndex="4" />
@@ -52,13 +56,35 @@
 
                                 <ButtonBar GridPane.columnSpan="2" GridPane.rowIndex="5">
                                     <buttons>
-                                        <Button fx:id="createButton" mnemonicParsing="false" onAction="#createButtonAction" text="Add" />
-                                        <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateButtonAction" text="Save" />
-                                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeButtonAction" text="Remove" />
+                                        <Button fx:id="createButton" mnemonicParsing="false" onAction="#createButtonAction" text="Add" >
+                                            <tooltip><Tooltip text="Add Connection"></Tooltip></tooltip>
+                                            <graphic>
+                                                <MaterialDesignIconView glyphName="PLUS_BOX" glyphSize="18" />
+                                            </graphic>
+                                        </Button>
+                                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeButtonAction" text="Delete" >
+                                            <tooltip><Tooltip text="Delete Connection"></Tooltip></tooltip>
+                                            <graphic>
+                                                <MaterialDesignIconView glyphName="DELETE_FOREVER" glyphSize="18" />
+                                            </graphic>
+                                        </Button>
+                                        <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateButtonAction" text="Save" >
+                                            <tooltip><Tooltip text="Save Connection"></Tooltip></tooltip>
+                                            <graphic>
+                                                <MaterialDesignIconView glyphName="CONTENT_SAVE" glyphSize="18" />
+                                            </graphic>
+                                        </Button>
+
+                                        <Button fx:id="testButton" mnemonicParsing="false" onAction="#testButtonAction"  text="Test" >
+                                            <tooltip><Tooltip text="Test Connection"></Tooltip></tooltip>
+                                            <graphic>
+                                                <MaterialDesignIconView glyphName="CHECK_ALL" glyphSize="18" />
+                                            </graphic>
+                                        </Button>
                                     </buttons>
                                 </ButtonBar>
-                                <TextArea fx:id="conntest" editable="false" opacity="0.38" prefHeight="38.0" prefWidth="265.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                <Button fx:id="testButton" mnemonicParsing="false" onAction="#testButtonAction" prefHeight="30.0" prefWidth="67.0" text="Test" GridPane.rowIndex="6" />
+                                <TextArea fx:id="conntest" editable="false" opacity="0.38" prefHeight="60.0" prefWidth="265.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+<!--                                <Button fx:id="testButton" mnemonicParsing="false" onAction="#testButtonAction" prefHeight="30.0" prefWidth="67.0" text="Test" GridPane.rowIndex="6" />-->
                             </children>
                         </GridPane>
                     </children>

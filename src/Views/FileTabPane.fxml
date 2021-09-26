@@ -9,10 +9,14 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FileTabPaneController">
    <children>
-      <TabPane fx:id="tabPane" focusTraversable="false" stylesheets="@../Styling/FileTabPane.css" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-      <Button   mnemonicParsing="false" focusTraversable="false"  onAction="#newFile" text="+"  AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <TabPane fx:id="tabPane" focusTraversable="false" stylesheets="@../Styling/FileTabPane.css" tabClosingPolicy="ALL_TABS" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="5.0" />
+      <Button   mnemonicParsing="false" focusTraversable="false"  onAction="#newFile"  AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <graphic>
+            <MaterialDesignIconView glyphName="NOTE_PLUS" glyphSize="18"/>
+         </graphic>
          <font>
             <Font size="12.0" />
          </font>

@@ -10,6 +10,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.geometry.Insets?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <VBox fx:id="vBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainPaneController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
@@ -20,25 +22,41 @@
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <FontAwesomeIconView glyphName="FILE_CODE_ALT" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open…">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <FontAwesomeIconView glyphName="FOLDER_OPEN_ALT" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <SeparatorMenuItem mnemonicParsing="false" />
                     <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <FontAwesomeIconView glyphName="FLOPPY_ALT" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <MenuItem mnemonicParsing="false" onAction="#saveAsFile" text="Save As…">
                         <accelerator>
                             <KeyCodeCombination alt="DOWN" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <MaterialDesignIconView glyphName="CONTENT_SAVE_ALL" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <SeparatorMenuItem mnemonicParsing="false" />
-                    <MenuItem mnemonicParsing="false" onAction="#quitApp" text="Quit" />
+                    <MenuItem mnemonicParsing="false" onAction="#quitApp" text="Quit" >
+                        <graphic>
+                            <MaterialDesignIconView glyphName="CLOSE_BOX_OUTLINE" glyphSize="18" />
+                        </graphic>
+                    </MenuItem>
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
@@ -47,55 +65,88 @@
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <MaterialDesignIconView glyphName="UNDO" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <MenuItem mnemonicParsing="false" onAction="#redo" text="Redo">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <MaterialDesignIconView glyphName="REDO" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <SeparatorMenuItem mnemonicParsing="false" />
                     <MenuItem mnemonicParsing="false" onAction="#cut" text="Cut">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <MaterialDesignIconView glyphName="CONTENT_CUT" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <MenuItem mnemonicParsing="false" onAction="#copy" text="Copy">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <MaterialDesignIconView glyphName="CONTENT_COPY" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <MenuItem mnemonicParsing="false" onAction="#paste" text="Paste">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <MaterialDesignIconView glyphName="CONTENT_PASTE" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <SeparatorMenuItem mnemonicParsing="false" />
-                    <MenuItem mnemonicParsing="false" onAction="#find" text="Find...">
+                    <MenuItem mnemonicParsing="false" onAction="#find" text="Find">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <MaterialDesignIconView glyphName="MAGNIFY" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
-                    <MenuItem mnemonicParsing="false" onAction="#replace" text="Replace...">
+                    <MenuItem mnemonicParsing="false" onAction="#replace" text="Replace">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <MaterialDesignIconView glyphName="REDO_VARIANT" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                     <SeparatorMenuItem mnemonicParsing="false" />
                     <MenuItem mnemonicParsing="false" onAction="#selectAll" text="Select All">
                         <accelerator>
                             <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                         </accelerator>
+                        <graphic>
+                            <MaterialDesignIconView glyphName="SELECT_ALL" glyphSize="18" />
+                        </graphic>
                     </MenuItem>
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Connections">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#manageConnection" text="Manage Connections" />
+                    <MenuItem mnemonicParsing="false" onAction="#manageConnection" text="Manage Connections" >
+                        <graphic>
+                            <MaterialDesignIconView glyphName="DATABASE" glyphSize="18" />
+                        </graphic>
+                    </MenuItem>
                 </items>
+
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#help" text="About..." />
+                    <MenuItem mnemonicParsing="false" onAction="#help" text="About">
+                        <graphic>
+                            <MaterialDesignIconView glyphName="COMMENT_ACCOUNT_OUTLINE" glyphSize="18" />
+                        </graphic>
+                    </MenuItem>
                 </items>
             </Menu>
         </menus>

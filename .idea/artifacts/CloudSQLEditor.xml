@@ -1,0 +1,29 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="CloudSQLEditor">
+    <output-path>$PROJECT_DIR$/out/artifacts/CloudSQLEditor</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="Main.CloudSQLEditor" />
+        <option name="description" value="Cloud SQL Editor" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="Cloud SQL Editor" />
+        <option name="vendor" value="Ficus" />
+        <option name="version" value="1.0" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="CloudSQLEditor.jar">
+        <element id="module-output" name="CloudSQLEditor" />
+      </element>
+      <element id="library" level="project" name="CloudSqlEditorService" />
+      <element id="library" level="project" name="derby" />
+      <element id="library" level="project" name="flowless-0.6.1" />
+      <element id="library" level="project" name="opencsv-5.3" />
+      <element id="library" level="project" name="reactfx-2.0-M5" />
+      <element id="library" level="project" name="richtextfx-0.10.5" />
+      <element id="library" level="project" name="undofx-2.1.0" />
+      <element id="library" level="project" name="wellbehavedfx-0.3.3" />
+    </root>
+  </artifact>
+</component>

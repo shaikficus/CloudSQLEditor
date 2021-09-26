@@ -11,6 +11,7 @@ import ficus.service.facade.CloudSQLEditorServiceFacade;
 import ficus.service.proxy.AccessDeniedException;
 import ficus.service.proxy.InvalidParametersException;
 import ficus.service.proxy.OperationFailedException;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -34,6 +35,7 @@ import org.reactfx.Subscription;
 import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import utils.TableUtils;
 
 
 import javax.xml.parsers.DocumentBuilder;
@@ -88,6 +90,11 @@ public class FileTabController implements Initializable {
         // can listen for saved state.
         subscription = new SQLHighlight(textArea).highlight();
         tab.setOnCloseRequest(removeSelectedTabIfSavedListener());
+        fsize.valueProperty().addListener((observable, oldValue, newValue) -> {
+            String fontSizestyle = "-fx-font-size: "+newValue+"pt;";
+           textArea.setStyle(fontSizestyle);
+
+        });
     }
 
     /**
@@ -323,6 +330,7 @@ public class FileTabController implements Initializable {
         String returnKey = event.getCode().toString();
         if(isCtrlDown && returnKey.equalsIgnoreCase("ENTER") ){
             getQueryResults();
+
         }
 
 
@@ -342,8 +350,6 @@ public class FileTabController implements Initializable {
         if(query.length()!=0) {
             String out = null;
 //        System.out.println("Number of Rows: "+rows.getValueFactory().getValue().intValue());
-            System.out.println(textArea.getText());
-            System.out.println(textArea.getSelectedText());
             StringBuilder logtext = new StringBuilder();
             logtext.append("Connected to " + selectedConnection.getConnectionName() + " logged in as " + selectedConnection.getUserName() + " and Instance URL " + selectedConnection.getBIURL());
             logtext.append(System.getProperty("line.separator"));
@@ -351,18 +357,28 @@ public class FileTabController implements Initializable {
             logtext.append(System.getProperty("line.separator"));
             logtext.append(parseQuery.replace("#query", query).replace("#row", rows.getValueFactory().getValue().toString()));
             String encodedString = null;
+
             try {
-                Instant start = Instant.now();
+                query = parseQuery.replace("#query", query).replace("#row", rows.getValueFactory().getValue().toString());
+                Date d1 = new Date();
                 encodedString = Base64.getEncoder().withoutPadding().encodeToString(query.getBytes());
                 repService.setSqlQuery(encodedString);
                 out = repService.executeCloudSql();
-                Instant end = Instant.now();
-                Duration timeElapsed = Duration.between(start, end);
+                Date d2 = new Date();
+                long diffMs = d2.getTime() - d1.getTime();
+                long diffSec = diffMs / 1000;
+                long hrs = (diffSec / (60 * 60 )) % 24;
+                long min = (diffSec / 60)%60;
+                long sec = diffSec % 60;
                 //logtext.append(System.getProperty("line.separator"));
                 //logtext.append(out);
                 //Clear Table
                 result.getItems().clear();
                 result.getColumns().clear();
+                result.setEditable(true);
+                result.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+                result.getSelectionModel().setCellSelectionEnabled(true);
+                TableUtils.installCopyPasteHandler(result);
                 log.setText(String.valueOf(logtext));
                 Document xmlOut = convertStringtoXML("<" + out);
                 xmlOut.getDocumentElement().normalize();
@@ -423,8 +439,11 @@ public class FileTabController implements Initializable {
                     rowdata.add(rowarray);
                 }
                 result.getItems().addAll(rowdata);
-                elapsedtime.setText(timeElapsed.toString());
-                rowcount.setText(String.valueOf(rowdata.size()));
+                elapsedtime.setText(String.format("%02d" , hrs)+":"+String.format("%02d" , min)+":"+String.format("%02d" , sec)+" (HH:MM:SS)");
+
+
+                countofrows.setText(String.valueOf(rowdata.size()));
+
 
             } catch (AccessDeniedException e) {
 
@@ -468,14 +487,14 @@ public class FileTabController implements Initializable {
     //@FXML private TextArea textArea;
     @FXML private CodeArea textArea;
     @FXML private Spinner<Integer> rows;
+    @FXML private Spinner<Integer> fsize;
     @FXML private TextArea log;
     @FXML private ChoiceBox connlist;
     @FXML private Button run;
     @FXML private Button connect;
     @FXML private Button disconnect;
-    @FXML private TextField rowcount;
-    @FXML private TextField elapsedtime;
-
+    @FXML private Label countofrows;
+    @FXML private Label elapsedtime;
 
 
 
@@ -518,6 +537,7 @@ public class FileTabController implements Initializable {
                 connMsg.setTitle("Information");
                 connMsg.setHeaderText("Connected to "+selectedConnection.getConnectionName()+"!!");
                 connMsg.show();
+                textArea.requestFocus();
             } catch (MalformedURLException e) {
                 connMsg.setAlertType(Alert.AlertType.ERROR);
                 connMsg.setResizable(true);
@@ -629,7 +649,7 @@ public class FileTabController implements Initializable {
     public void exportData(ActionEvent actionEvent) {
 //        DirectoryChooser directoryChooser = new DirectoryChooser();
 //        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-//        File selectedDirectory = directoryChooser.showDialog(rowcount.getScene().getWindow());
+//        File selectedDirectory = directoryChooser.showDialog(countofrows.getScene().getWindow());
 //        System.out.println(selectedDirectory.getAbsolutePath());
 
         FileChooser fileChooser = new FileChooser();
@@ -640,7 +660,7 @@ public class FileTabController implements Initializable {
         DateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss");
         String strDate = dateFormat.format(date);
         fileChooser.setInitialFileName("Export_"+strDate+".csv");
-        File selectedFile = fileChooser.showSaveDialog(rowcount.getScene().getWindow());
+        File selectedFile = fileChooser.showSaveDialog(textArea.getScene().getWindow());
         if (selectedFile != null) {
         String csv = selectedFile.getAbsolutePath();
 

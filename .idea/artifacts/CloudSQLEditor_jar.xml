@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CloudSQLEditor:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CloudSQLEditor_jar</output-path>
+    <root id="archive" name="CloudSQLEditor.jar">
+      <element id="module-output" name="CloudSQLEditor" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/My/jar_files/wellbehavedfx-0.3.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/My/jar_files/CloudSqlEditorService.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/My/jar_files/flowless-0.6.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/My/richtextfx-0.10.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/My/jar_files/opencsv/opencsv-5.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/My/jar_files/undofx-2.1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/My/db-derby-10.14.2.0-lib/db-derby-10.14.2.0-lib/lib/derby.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/My/jar_files/reactfx-2.0-M5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -3,6 +3,7 @@ package Controllers;
 import DB.SQLConnectionDB;
 import Models.Connection;
 import Models.SampleData;
+import ficus.service.facade.CloudSQLEditorServiceFacade;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -12,10 +13,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
@@ -74,9 +72,16 @@ public class ConnectionsController implements Initializable {
         //SampleData.fillSampleData(connectionList); Commented by Mustafa
         //SQLConnectionDB db = new SQLConnectionDB();
         try {
+db.createConnTable();
             db.executeQuery(SELECTSQL,connectionList);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            Alert msgPopUp = new Alert(Alert.AlertType.NONE);
+            msgPopUp.setAlertType(Alert.AlertType.ERROR);
+            msgPopUp.setResizable(true);
+            msgPopUp.setTitle("Error Message");
+            msgPopUp.setHeaderText("Error in processing query!!");
+            msgPopUp.setContentText(throwables.getMessage());
+            msgPopUp.show();
         }
 
         // Use a sorted list; sort by lastname; then by firstname
@@ -94,7 +99,7 @@ public class ConnectionsController implements Initializable {
 
         listView.getSelectionModel().selectedItemProperty().addListener(
                 personChangeListener = (observable, oldValue, newValue) -> {
-                    System.out.println("Selected item: " + newValue);
+
                     // newValue can be null if nothing is selected
                     selectedConnection = newValue;
                     modifiedProperty.set(false);
@@ -128,7 +133,7 @@ public class ConnectionsController implements Initializable {
 
     @FXML
     private void createButtonAction(ActionEvent actionEvent) {
-        System.out.println("Create");
+
         Connection connection = new Connection();
         connectionList.add(connection);
 
@@ -138,14 +143,16 @@ public class ConnectionsController implements Initializable {
 
     @FXML
     private void removeButtonAction(ActionEvent actionEvent) {
-        System.out.println("Remove " + selectedConnection);
+
         try {
             db.checkConnection(selectedConnection,"DELETE");
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+
+            conntest.setText("Error in removing connection: "+throwables.getMessage());
         }
         connectionList.remove(selectedConnection);
+        conntest.setText("Connection removed successfully");
     }
 
     @FXML
@@ -158,19 +165,24 @@ public class ConnectionsController implements Initializable {
         p.setPassword(Password.getText());
         p.setReportPath(ReportPath.getText());
         p.setBIURL(BIURL.getText());
-        System.out.println(p.getConnectionName()+"-"+p.getUserName());
+
         try {
               db.checkConnection(p,"UPDATE");
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            conntest.setText("Error in update connection: "+throwables.getMessage());
+
         }
+        conntest.setText(selectedConnection.getConnectionName()+" Connection Updated Successfully");
         listView.getSelectionModel().selectedItemProperty().addListener(personChangeListener);
         modifiedProperty.set(false);
     }
 
     public void testButtonAction(ActionEvent actionEvent) {
-        System.out.println("Test " + selectedConnection);
-        conntest.setText("Test Connection: " + selectedConnection);
+
+        CloudSQLEditorServiceFacade testConn = new CloudSQLEditorServiceFacade();
+        String msg = testConn.testConnection(selectedConnection.getUserName(), selectedConnection.getPassword(), selectedConnection.getBIURL());
+
+        conntest.setText("Test Connection: " + msg);
     }
 }
