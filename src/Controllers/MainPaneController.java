@@ -176,7 +176,7 @@ public class MainPaneController implements Initializable {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
-        stage.getIcons().add(new Image("/Styling/CloudEditor.png"));
+        stage.getIcons().add(new Image("/Styling/118633-84.png"));
         stage.show();
     }
 
@@ -195,7 +195,7 @@ public class MainPaneController implements Initializable {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
-        stage.getIcons().add(new Image("/Styling/CloudEditor.png"));
+        stage.getIcons().add(new Image("/Styling/118633-84.png"));
         stage.show();
 
     }

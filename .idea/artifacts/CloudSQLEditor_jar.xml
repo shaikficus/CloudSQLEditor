@@ -11,6 +11,16 @@
       <element id="extracted-dir" path="$USER_HOME$/Desktop/My/jar_files/undofx-2.1.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/My/db-derby-10.14.2.0-lib/db-derby-10.14.2.0-lib/lib/derby.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/My/jar_files/reactfx-2.0-M5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-commons-8.15.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-controls-8.15.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-emojione-2.2.7-2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-fontawesome-4.7.0-5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-glyphsbrowser-1.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-icons525-3.0.0-4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-materialdesignfont-1.7.22-4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-materialicons-2.2.0-5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-octicons-4.3.0-5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../Mustafa/Files/Softwares/SearchBar.fontawesomefx-glyphsbrowser-1.3.0/fontawesomefx-glyphsbrowser-1.3.0/lib/fontawesomefx-weathericons-2.0.10-5.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

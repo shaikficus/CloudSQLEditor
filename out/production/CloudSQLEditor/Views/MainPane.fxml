@@ -12,9 +12,12 @@
 <?import javafx.geometry.Insets?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import de.jensd.fx.glyphs.octicons.OctIconView?>
 <VBox fx:id="vBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainPaneController">
     <children>
-        <MenuBar VBox.vgrow="NEVER">
+        <MenuBar VBox.vgrow="NEVER" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid; -fx-font-weight: bold;">
         <menus>
             <Menu mnemonicParsing="false" text="File">
                 <items>
@@ -154,10 +157,118 @@
 
         <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
             <children>
+                <ImageView layoutX="750" layoutY="150" VBox.vgrow="ALWAYS">
+                    <image>
+                        <Image url="/Styling/CloudEditor_BG.png" preserveRatio="true"></Image>
+                    </image>
+                </ImageView>
+<TilePane VBox.vgrow="ALWAYS" hgap="10.0" vgap="10.0" prefWidth="1230.0" alignment="TOP_LEFT" layoutX="280"  layoutY="300" >
+
+    <VBox>
+<TitledPane  text="Features" prefWidth="400" collapsible="false" style="-fx-color: #0096DA;-fx-text-fill: white; -fx-font-weight: bold;">
+    <VBox >
+        <HBox VBox.vgrow="ALWAYS">
+            <Label text="&#9679;"></Label>
+            <Separator orientation="VERTICAL"></Separator>
+            <Label text="Execute Cloud(ERP/HCM) SQL queries in configured respective cloud SaaS connection" wrapText="true" ></Label>
+        </HBox>
+        <HBox>
+            <Label text="&#9679;"></Label>
+            <Separator orientation="VERTICAL"></Separator>
+            <Label text="View and export(csv) output to validate and further process of output" wrapText="true" ></Label>
+        </HBox>
+        <HBox>
+            <Label text="&#9679;"></Label>
+            <Separator orientation="VERTICAL"></Separator>
+            <Label text="Manage and configure new cloud connections" wrapText="true" ></Label>
+        </HBox>
+        <HBox>
+            <Label text="&#9679;"></Label>
+            <Separator orientation="VERTICAL"></Separator>
+            <Label text="Find table/view name and structure" wrapText="true"></Label>
+        </HBox>
+        <HBox>
+
+            <Label text=" " wrapText="true"></Label>
+        </HBox>
+        <HBox>
+
+            <Label text=" " wrapText="true"></Label>
+        </HBox>
+    </VBox>
+</TitledPane>
+    </VBox>
+    <VBox>
+    <TitledPane  text="Project" prefWidth="400" collapsible="false" style="-fx-color: #0096DA;-fx-text-fill: white; -fx-font-weight: bold;">
+        <VBox >
+            <HBox VBox.vgrow="ALWAYS">
+                <Label text="&#9679;"></Label>
+                <Separator orientation="VERTICAL"></Separator>
+                <Label text="Developer SIDEKICK is a try to address the gap for executing SaaS SQL queries and validate the details" wrapText="true" ></Label>
+            </HBox>
+            <HBox>
+                <Label text="&#9679;"></Label>
+                <Separator orientation="VERTICAL"></Separator>
+                <Label text="Based on interest anyone can use it with any restriction or licensing" wrapText="true" ></Label>
+            </HBox>
+            <HBox>
+                <Label text="&#9679;"></Label>
+                <Separator orientation="VERTICAL"></Separator>
+                <Label text="Source code is available in GITHUB. Suggestions, changes and comments always welcome" wrapText="true" ></Label>
+            </HBox>
+            <HBox>
+                <Label text="&#9679;"></Label>
+                <Separator orientation="VERTICAL"></Separator>
+                <Label text="Anyone can fork the code and extent the existing capability and functionality. Please do mention in credits." wrapText="true"></Label>
+            </HBox>
+        </VBox>
+    </TitledPane>
+    </VBox>
+    <VBox>
+    <TitledPane  text="Credits" prefWidth="400" collapsible="false" style="-fx-color: #0096DA;-fx-text-fill: white; -fx-font-weight: bold;">
+        <VBox >
+            <HBox VBox.vgrow="ALWAYS">
+                <Label text="&#9679;"></Label>
+                <Separator orientation="VERTICAL"></Separator>
+                <Label text="Thanks to jguitana - simple-text-editor" wrapText="true" ></Label>
+            </HBox>
+            <HBox>
+                <Label text="&#9679;"></Label>
+                <Separator orientation="VERTICAL"></Separator>
+                <Label text="Thanks to Jerady - fontawesomefx-glyphsbrowser" wrapText="true" ></Label>
+            </HBox>
+            <HBox>
+                <Label text="&#9679;"></Label>
+                <Separator orientation="VERTICAL"></Separator>
+                <Label text="Thanks to Roland09 - TableCopyCellsDemo" wrapText="true" ></Label>
+            </HBox>
+            <HBox>
+                <Label text="&#9679;"></Label>
+                <Separator orientation="VERTICAL"></Separator>
+                <Label text="Thanks to FXMisc - RichTextFX" wrapText="true"></Label>
+            </HBox>
+            <HBox>
+                <Label text="&#9679;"></Label>
+                <Separator orientation="VERTICAL"></Separator>
+                <Label text="Thanks to others, Stackoverflow, Google without your indirect help this was not possible" wrapText="true"></Label>
+            </HBox>
+            <HBox>
+
+                <Label text=" " wrapText="true"></Label>
+            </HBox>
+            <HBox>
+
+                <Label text=" " wrapText="true"></Label>
+            </HBox>
+        </VBox>
+    </TitledPane>
+    </VBox>
+
+</TilePane>
                 <fx:include fx:id="fileTabPane" source="FileTabPane.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </children>
         </AnchorPane>
-        <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+        <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
             <children>
                 <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
                 <Label maxWidth="-1.0" text="" HBox.hgrow="NEVER">
